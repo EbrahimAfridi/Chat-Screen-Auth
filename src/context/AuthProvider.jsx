@@ -8,27 +8,27 @@ const registeredUsers = {
 };
 
 export default function AuthProvider({ children }) {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const authenticatedUser = localStorage.getItem('authenticatedUser');
-    console.log('authenticatedUser:', authenticatedUser); // Add this line
-
+    console.log('authenticatedUser:', authenticatedUser);
     if (authenticatedUser) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('handleLogin is called', username, password); // Add this line
+    console.log('handleLogin is called', username, password);
     const storedPassword = registeredUsers[username];
     if (storedPassword && storedPassword === password) {
       localStorage.setItem('authenticatedUser', JSON.stringify({ username }));
       setIsAuthenticated(true);
-      console.log('isAuthenticated after login:', isAuthenticated); // Add this line
+      console.log('isAuthenticated after login:', isAuthenticated);
     } else {
       alert('Invalid credentials');
     }

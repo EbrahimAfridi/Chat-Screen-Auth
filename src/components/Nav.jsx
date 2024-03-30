@@ -4,7 +4,7 @@ import {useChat} from "../context/ChatProvider.jsx";
 
 const Nav = () => {
   const { setIsAuthenticated } = useAuth();
-    const { setDepartment } = useChat();
+  const { setDepartment } = useChat();
   const handleLogout = () => {
     console.log("logout clicked")
     localStorage.removeItem('authenticatedUser');

@@ -4,7 +4,7 @@ import {useChat} from "../context/ChatProvider.jsx";
 
 const Input = () => {
 
-  const { handleInputChange, departmentName, handleIconClick } = useChat();
+  const { handleInputChange, department, handleIconClick } = useChat();
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -18,7 +18,7 @@ const Input = () => {
         id="chatInput"
         onKeyDown={handleKeyDown}
         onChange={handleInputChange}
-        placeholder={`Enter your ${departmentName} query here...`}
+        placeholder={`Enter your ${department} query here...`}
       />
       <Icon>
         <PaperPlaneTilt onClick={handleIconClick}/>

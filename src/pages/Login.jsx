@@ -10,18 +10,25 @@ import {
 import bg from "../assets/background.svg";
 import {EnvelopeSimple, Key} from "@phosphor-icons/react";
 import {useAuth} from "../context/AuthProvider.jsx";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 export default function Login() {
-  const {handleLogin, username, setUsername, password, setPassword} = useAuth();
+  const { handleLogin, isAuthenticated, username, setUsername, password, setPassword } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/chat");
+  }, [isAuthenticated, navigate])
 
   return (
     <>
-      <Background src={bg} alt="Background"/>
+      <Background src={bg} alt="Background" />
       <LoginBox>
         <Form onSubmit={handleLogin}>
           <FormTitle>Log in</FormTitle>
           <FormInputContainer>
-            <EnvelopeSimple size={20} color="black"/>
+            <EnvelopeSimple size={20} color="black" />
             <FormInput
               type="text"
               value={username}
@@ -30,7 +37,7 @@ export default function Login() {
             />
           </FormInputContainer>
           <FormInputContainer>
-            <Key size={20} color="black"/>
+            <Key size={20} color="black" />
             <FormInput
               type="password"
               value={password}
@@ -40,7 +47,7 @@ export default function Login() {
           </FormInputContainer>
           <Button type="submit">Log in</Button>
         </Form>
-        <ImageBox src="https://cdn.visily.ai/app/production/1711699536687/static/SignupGraphic-e7e3321a.png"/>
+        <ImageBox src="https://cdn.visily.ai/app/production/1711699536687/static/SignupGraphic-e7e3321a.png" />
       </LoginBox>
     </>
   )

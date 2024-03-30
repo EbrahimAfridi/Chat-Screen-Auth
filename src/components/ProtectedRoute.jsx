@@ -7,12 +7,12 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isAuthenticated) {
+    if (!isAuthenticated) {
       navigate("/", { replace: true });
     }
   }, [navigate, isAuthenticated]);
 
-  return children;
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;
