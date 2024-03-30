@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Navbar = styled.nav`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
 `;
 
@@ -18,44 +19,50 @@ const SelectContainer = styled.div`
 `;
 
 const Select = styled.select`
-    padding: 5px 10px;
+    padding: 10px;
     min-width: 150px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
 `;
 
 const Button = styled.button`
     padding: 10px 20px;
-    background-color: #604bc9;
-    border: 1px solid #604bc9;
+    background-color: ${props => props.type === 'submit' ? '#604bc9' : '#fff'};
+    //background-color: #604bc9;
+    border: 1px solid #fff;
     border-radius: 6px;
     min-width: 100px;
     font-size: 1rem;
     font-weight: bold;
-    margin-top: 30px;
-    color: whitesmoke;
+    color: ${props => props.type === 'submit' ? '#fff' : 'black'};
 `;
 
 const InputContainer = styled.div`
     margin: 0 auto;
-    width: 50%;
+    width: 60vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #a09f9f;
+    border: 1px solid #070707;
     border-radius: 8px;
-    padding-right: 10px;
+    //padding-right: 10px;
 `;
 
 const ChatInput = styled.input`
     height: 25px;
-    color: whitesmoke;
+    color: #fff;
     background-color: transparent;
-    width: 90%;
+    width: 100%;
     padding: 10px;
     outline: none;
     border: none;
 
     &::placeholder {
-        color: whitesmoke;
+        color: #fff;
     }
 `;
 
@@ -64,12 +71,15 @@ const ChatContainer = styled.div`
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    width: 60vw;
+    margin: 0 auto;
 `;
 
 const ChatBox = styled.div`
     height: 400px;
     overflow-y: auto;
-    border: 1px solid #ccc;
+    border: 1px solid #070707;
+    border-radius: 8px;
     padding: 10px;
 `;
 
@@ -78,6 +88,7 @@ const ChatMessage = styled.div`
     gap: 10px;
     justify-content: flex-start;
     align-items: center;
+
 `;
 
 const PromptResponse = styled.p`
@@ -92,6 +103,7 @@ const Icon = styled.i`
     align-items: center;
     gap: 5px;
     font-size: 20px;
+    padding-right: 10px;
 `;
 
 const Background = styled.img`

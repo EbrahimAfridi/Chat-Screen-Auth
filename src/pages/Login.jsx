@@ -45,7 +45,7 @@ export default function Login() {
               placeholder="Password"
             />
           </FormInputContainer>
-          <Button type="submit">Log in</Button>
+          <Button className="btn-login" type="submit">Log in</Button>
         </Form>
         <ImageBox src="https://cdn.visily.ai/app/production/1711699536687/static/SignupGraphic-e7e3321a.png" />
       </LoginBox>

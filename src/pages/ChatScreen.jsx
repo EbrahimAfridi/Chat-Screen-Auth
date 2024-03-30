@@ -9,13 +9,13 @@ const ChatScreen = () => {
   const { setIsAuthenticated } = useAuth();
 
   return (
-    <>
+    <div  className="chat-screen">
       <Nav setIsAuthenticated={setIsAuthenticated} />
       <ChatContainer>
         <ChatBoxLayout />
         <Input />
       </ChatContainer>
-    </>
+    </div>
   )
 }
 

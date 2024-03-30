@@ -8,7 +8,6 @@ const registeredUsers = {
 };
 
 export default function AuthProvider({ children }) {
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,8 +44,8 @@ export default function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={values}>
-      {children}
+    <AuthContext.Provider value={ values }>
+      { children }
     </AuthContext.Provider>
   )
 }
