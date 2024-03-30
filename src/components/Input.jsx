@@ -1,7 +1,10 @@
 import {ChatInput, Icon, InputContainer} from "../../styles/GlobalStyles.jsx";
 import {PaperPlaneTilt} from "@phosphor-icons/react";
+import {useChat} from "../context/ChatProvider.jsx";
 
-const Input = ({ handleInputChange, departmentName, handleIconClick }) => {
+const Input = () => {
+
+  const { handleInputChange, departmentName, handleIconClick } = useChat();
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();

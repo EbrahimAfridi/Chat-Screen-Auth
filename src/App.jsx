@@ -1,73 +1,31 @@
-// import {useState, useEffect} from 'react';
 import ChatScreen from "./pages/ChatScreen.jsx";
 import Login from "./pages/Login.jsx";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Error from "./pages/Error.jsx";
+import {Route, useNavigate} from "react-router-dom";
+import {useAuth} from "./context/AuthProvider.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import {useEffect} from "react";
 
-const registeredUsers = {
-  'user1': 'password1',
-  'user2': 'password2',
-};
+function App() {
+  console.log("hi")
+  const {isAuthenticated} = useAuth();
+  const navigate = useNavigate();
 
-// Creating routers
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Login/>,
-  },
-  {
-    path: '/chat',
-    element: <ChatScreen/>,
-  },
-  {
-    path: '*',
-    element: <Error/>,
-  }
-]);
+  useEffect(() => {
 
-  function App() {
-    return <RouterProvider router={router} />;
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [isAuthenticated, setIsAuthenticated] = useState(false);
-    //
-    // useEffect(() => {
-    //   const authenticatedUser = localStorage.getItem('authenticatedUser');
-    //   if (authenticatedUser) {
-    //     setIsAuthenticated(true);
-    //   }
-    // }, []);
-    //
-    // const handleLogin = (e) => {
-    //   e.preventDefault();
-    //   const storedPassword = registeredUsers[username];
-    //   if (storedPassword && storedPassword === password) {
-    //     localStorage.setItem('authenticatedUser', JSON.stringify({username}));
-    //     setIsAuthenticated(true);
-    //   } else {
-    //     alert('Invalid credentials');
-    //   }
-    // };
-    //
-    // if (isAuthenticated) {
-    //   return (
-    //     <div>
-    //       <ChatScreen setIsAuthenticated={setIsAuthenticated}/>
-    //     </div>
-    //   );
-    // }
-    //
-    // return (
-    //   <>
-    //     <Login
-    //       handleLogin={handleLogin}
-    //       password={password}
-    //       setPassword={setPassword}
-    //       username={username}
-    //       setUsername={setUsername}
-    //     />
-    //   </>
-    // );
-  }
+    if (isAuthenticated) {
+      navigate('/chat');
+    }
+    console.log("1", isAuthenticated);
+  }, [isAuthenticated, navigate]);
+
+  console.log(isAuthenticated)
+
+
+  return (
+    // <Route path="/">
+      isAuthenticated ? <ProtectedRoute><ChatScreen/></ProtectedRoute> : <Login/>
+    // </Route>
+  );
+}
 
 export default App;

@@ -31,6 +31,7 @@ const Button = styled.button`
     font-size: 1rem;
     font-weight: bold;
     margin-top: 30px;
+    color: whitesmoke;
 `;
 
 const InputContainer = styled.div`

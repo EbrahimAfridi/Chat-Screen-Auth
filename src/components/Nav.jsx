@@ -1,7 +1,12 @@
 import {Navbar, Button, Select, SelectContainer, Title} from "../../styles/GlobalStyles.jsx";
+import {useAuth} from "../context/AuthProvider.jsx";
+import {useChat} from "../context/ChatProvider.jsx";
 
-const Nav = ({ setIsAuthenticated, setDepartment }) => {
+const Nav = () => {
+  const { setIsAuthenticated } = useAuth();
+    const { setDepartment } = useChat();
   const handleLogout = () => {
+    console.log("logout clicked")
     localStorage.removeItem('authenticatedUser');
     setIsAuthenticated(false);
   };

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Background,
   Button,
@@ -10,8 +9,11 @@ import {
 } from "../../styles/GlobalStyles.jsx";
 import bg from "../assets/background.svg";
 import {EnvelopeSimple, Key} from "@phosphor-icons/react";
+import {useAuth} from "../context/AuthProvider.jsx";
 
-export default function Login({handleLogin, username, setUsername, password, setPassword}) {
+export default function Login() {
+  const {handleLogin, username, setUsername, password, setPassword} = useAuth();
+
   return (
     <>
       <Background src={bg} alt="Background"/>
